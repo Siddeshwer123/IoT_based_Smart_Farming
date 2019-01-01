@@ -46,7 +46,7 @@ if(moisture>THRESHHOLD)
 }
 else
 {
-	digitWrite(7,LOW);
+	digitalWrite(7,LOW);
 }
 if(distance>=25)
 {
@@ -61,7 +61,7 @@ LedState(LOW);
 }
 delay(2000);
 }
-}
+
 void SendMessage1()
 {
 	mySerial.println("AT+CMGF=1");	
@@ -81,9 +81,9 @@ void SendMessage2()
 	delay(1000);
 	mySerial.println("AT+CMGS=\"+91xxxxxxxxxx\"\r"); //Replace x with mobile number
 	delay(1000);
-	mySerial("Reservoir going to be empty - Please refill"); // The SMS text you want to send
+	mySerial.println("Reservoir going to be empty - Please refill"); // The SMS text you want to send
 	delay(100);
-	mySerial.println((char)26)://ASCII code of CTRL+Z
+	mySerial.println((char)26);//ASCII code of CTRL+Z
 	delay(1000);
 }
 	
